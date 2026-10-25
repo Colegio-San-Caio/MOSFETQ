@@ -8,7 +8,10 @@ print(f"Bell counts: {counts}")
 print("OK - Entanglement verified")
 # try C++ version like oeneyeCPP
 if os.path.exists("./oeneyeQ"):
-    subprocess.run(["./oeneyeQ"])
+    try:
+        subprocess.run(["./oeneyeQ"])
+    except OSError as e:
+        print("skip oeneyeQ (not runnable here):", e)
 
 try:
     from qiskit import QuantumCircuit
